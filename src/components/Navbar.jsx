@@ -6,7 +6,7 @@ import { logo, menu, close } from "../assets";
 
 const Navbar = () => {
   const [active, setActive] = useState("");
-  const [toggle, setToggle] = useState(true);
+  const [toggle, setToggle] = useState(false);
 
   return (
     <nav
@@ -24,9 +24,9 @@ const Navbar = () => {
           }}
         >
           <img src={logo} alt="logo" className="w-9 h-9 object-contain" />
-          <p className="text-white text-[18px] font-bold cursor-pointer">
-            Amrindra{" "}
-            <span className="sm:block hidden">| Frontend Developer</span>
+          <p className="text-white text-[18px] font-bold cursor-pointer flex">
+            Amrindra &nbsp;
+            <span className="sm:block hidden">| Frontend Dev</span>
           </p>
         </Link>
 
@@ -67,7 +67,10 @@ const Navbar = () => {
                   className={`${
                     active === link.title ? "text-white" : "text-secondary"
                   } font-poppins font-medium cursor-pointer text-[16px]`}
-                  onClick={() => setActive(link.title)}
+                  onClick={() => {
+                    setToggle(!toggle);
+                    setActive(link.title);
+                  }}
                 >
                   <a href={`#${link.id}`}>{link.title}</a>
                 </li>
